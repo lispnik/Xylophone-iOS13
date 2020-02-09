@@ -11,8 +11,12 @@ import AVFoundation
 
 class ViewController: UIViewController {
         
-    @IBAction func buttonC(_ sender: UIButton) {
+    @IBAction func onNote(_ sender: UIButton) {
+        sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
         playSound(note: sender.currentTitle!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+            sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(1.0)
+        })
     }
     
     var player: AVAudioPlayer!
